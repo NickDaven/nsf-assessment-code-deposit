@@ -1,0 +1,37 @@
+[
+  {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "parameters": "22.7M",
+    "hidden_size": 384,
+    "num_layers": 6,
+    "max_seq_length": 512
+  },
+  {
+    "model": "huawei-noah/TinyBERT_General_4L_312D",
+    "parameters": "14.4M",
+    "hidden_size": 312,
+    "num_layers": 4,
+    "max_seq_length": 512
+  },
+  {
+    "model": "nreimers/MiniLM-L6-H384-uncased",
+    "parameters": "22.7M",
+    "hidden_size": 384,
+    "num_layers": 6,
+    "max_seq_length": 512
+  },
+  {
+    "model": "distilbert/distilbert-base-uncased",
+    "parameters": "66.4M",
+    "hidden_size": 768,
+    "num_layers": 6,
+    "max_seq_length": 512
+  },
+  {
+    "model": "google-bert/bert-base-uncased",
+    "parameters": "109.5M",
+    "hidden_size": 768,
+    "num_layers": 12,
+    "max_seq_length": 512
+  }
+]

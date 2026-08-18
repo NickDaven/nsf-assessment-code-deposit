@@ -1,0 +1,47 @@
+[
+  {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_shape": [
+      1,
+      15,
+      384
+    ],
+    "memory_mb": 90.9
+  },
+  {
+    "model": "huawei-noah/TinyBERT_General_4L_312D",
+    "embedding_shape": [
+      1,
+      15,
+      312
+    ],
+    "memory_mb": 57.4
+  },
+  {
+    "model": "nreimers/MiniLM-L6-H384-uncased",
+    "embedding_shape": [
+      1,
+      15,
+      384
+    ],
+    "memory_mb": 90.9
+  },
+  {
+    "model": "distilbert/distilbert-base-uncased",
+    "embedding_shape": [
+      1,
+      15,
+      768
+    ],
+    "memory_mb": 265.5
+  },
+  {
+    "model": "google-bert/bert-base-uncased",
+    "embedding_shape": [
+      1,
+      15,
+      768
+    ],
+    "memory_mb": 437.9
+  }
+]

@@ -1,22 +1,58 @@
-# Pipeline for Written Assessment
+# Pipeline: Written Assessment (AnswerLens)
 
-This folder should contain the complete public-safe pipeline and code for written student-response assessment.
+## Overview
+AnswerLens is an AI-powered web application that accepts a photo or scanned image of a student's handwritten answer sheet and automatically produces a transcription, assessment, score out of 10, and written feedback.
 
-## Required Contents
+## Architecture
+- **Backend**: FastAPI + Qwen2.5-VL-7B-Instruct (vision-language model) deployed on Vast.ai GPU instance, exposed via Cloudflare tunnel
+- **Frontend**: Next.js 14 web application deployed on Vercel
 
-- Source code for the written-assessment pipeline.
-- README describing the pipeline purpose and workflow.
-- Installation instructions for users unfamiliar with the project.
-- Example run commands.
-- Input and output file descriptions.
-- Configuration files, with secrets removed.
-- Data provenance notes and public/restricted data boundaries.
-- Test or smoke-test instructions.
-- Reproducibility notes, including dependencies, environment, random seeds, and expected outputs.
+## Installation
 
-## NSF Support Statement
+### Backend (Vast.ai or any GPU instance with ≥16GB VRAM)
+```bash
+git clone https://github.com/HrijP/Deployed.git
+cd Deployed/backend
+pip install -r requirements.txt
+uvicorn server:app --host 0.0.0.0 --port 8000 &
+```
 
-This work is supported by the National Science Foundation under Award No. [NSF PROJECT NUMBER TO BE ADDED].
+### Frontend (Local or Vercel)
+```bash
+cd Deployed/frontend
+npm install
+# Create .env.local with:
+# NEXT_PUBLIC_BACKEND_URL=https://YOUR_TUNNEL_URL
+npm run dev
+```
 
-Any opinions, findings, conclusions, or recommendations are those of the authors and do not necessarily reflect the views of the National Science Foundation.
+## Dependencies
+- Python: fastapi, uvicorn, transformers, torch, Pillow, python-multipart
+- Node.js: Next.js 14, React 18, TypeScript
 
+## Model
+- Qwen2.5-VL-7B-Instruct (Hugging Face: Qwen/Qwen2.5-VL-7B-Instruct)
+- Vision-language model capable of reading handwritten text in images
+
+## API Endpoints
+- GET /health — returns model status and device info
+- POST /grade — accepts image file, returns JSON with transcription, assessment, score, feedback
+
+## Input/Output
+- Input: JPG, PNG, or WEBP image of a student answer sheet (max 20MB)
+- Output:
+```json
+{
+  "transcription": "...",
+  "assessment": "...",
+  "score": "8/10 ...",
+  "feedback": "..."
+}
+```
+
+## Deployment
+See DEPLOY.md for complete step-by-step instructions covering Vast.ai instance setup, Cloudflare tunnel configuration, and Vercel deployment.
+
+## Live Demo
+- Frontend: https://deployed-hrijanns-projects.vercel.app
+- GitHub: https://github.com/HrijP/Deployed

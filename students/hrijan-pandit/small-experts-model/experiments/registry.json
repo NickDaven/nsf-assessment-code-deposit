@@ -1,0 +1,120 @@
+{
+  "experiments": [
+    {
+      "model": "huawei-noah/TinyBERT_General_4L_312D",
+      "domain": "statics",
+      "epochs": 3,
+      "train_sentences": 6791,
+      "final_loss": 5.379929112453087,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "distilbert/distilbert-base-uncased",
+      "domain": "statics",
+      "epochs": 3,
+      "train_sentences": 6791,
+      "final_loss": 2.3632554731182025,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "google-bert/bert-base-uncased",
+      "domain": "statics",
+      "epochs": 3,
+      "train_sentences": 6791,
+      "final_loss": 2.256776367636288,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "huawei-noah/TinyBERT_General_4L_312D",
+      "task": "triplet",
+      "domain": "statics",
+      "epochs": 3,
+      "triplets": 1000,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "distilbert/distilbert-base-uncased",
+      "task": "triplet",
+      "domain": "statics",
+      "epochs": 3,
+      "triplets": 1000,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "distilbert/distilbert-base-uncased",
+      "task": "ablation",
+      "ablation": "proximity_only",
+      "domain": "statics",
+      "epochs": 2,
+      "triplets": 300,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "distilbert/distilbert-base-uncased",
+      "task": "ablation",
+      "ablation": "thematic_only",
+      "domain": "statics",
+      "epochs": 2,
+      "triplets": 300,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "model": "distilbert/distilbert-base-uncased",
+      "task": "ablation",
+      "ablation": "proximity_and_thematic",
+      "domain": "statics",
+      "epochs": 2,
+      "triplets": 600,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "task": "distillation",
+      "teacher": "google-bert/bert-base-uncased",
+      "student": "huawei-noah/TinyBERT_General_4L_312D",
+      "domain": "statics",
+      "epochs": 3,
+      "final_loss": 0.10912453960026464,
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "task": "corpus_size_experiment",
+      "model": "distilbert/distilbert-base-uncased",
+      "domain": "statics",
+      "conditions": [
+        {
+          "corpus_size": "small",
+          "triplets": 100,
+          "epochs": 2
+        },
+        {
+          "corpus_size": "medium",
+          "triplets": 300,
+          "epochs": 2
+        },
+        {
+          "corpus_size": "full",
+          "triplets": 500,
+          "epochs": 2
+        }
+      ],
+      "seed": 42,
+      "corpus_version": "v1.0"
+    },
+    {
+      "task": "no_training_baseline",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "responses_evaluated": 50,
+      "avg_similarity": 0.1395,
+      "note": "Placeholder rubric indicators used \u2014 replace with real rubrics from professor"
+    }
+  ]
+}
